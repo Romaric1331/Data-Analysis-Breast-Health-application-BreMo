@@ -1,0 +1,51 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "license": "https://spdx.org/licenses/GPL-3.0",
+    "dateCreated": "2023-04-05",
+    "name": "BreMo",
+    "version": "3.0.0",
+    "applicationCategory": "Breast Health Awareness",
+    "isPartOf": "https://projects.learningplanetinstitute.org/projects/breast-health-in-nepal/summary",
+    "funder": {
+        "@type": "Organization",
+        "name": "Learning Planet Institute, Université Paris Cité"
+    },
+    "keywords": [
+        "Breast cancer",
+        "Health",
+        "Primary education"
+    ],
+    "programmingLanguage": [
+        "R",
+        "Python3"
+    ],
+    "operatingSystem": [
+        "Android"
+    ],
+    "softwareRequirements": [
+        "Python 3.4, R"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Romaric ",
+            "familyName": "SALLUSTRE",
+            "email": "romaric.sallustre@cri-paris.org",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "UFR Science du Vivant, Université Paris Cité"
+            }
+        },
+        {
+            "@type": "Person",
+            "givenName": "Sweekrity ",
+            "familyName": "KAODIA",
+            "email": "sweekrity.kanodia@cri-paris.org",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "FIRE Doctorate School, Université Paris Cité"
+            }
+        }
+    ]
+}
