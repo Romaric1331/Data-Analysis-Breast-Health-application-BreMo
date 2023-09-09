@@ -1,0 +1,515 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={K-means clustering for seintinelles study},
+  pdfauthor={Romaric Sallustre},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{K-means clustering for seintinelles study}
+\author{Romaric Sallustre}
+\date{2023-08-31}
+
+\begin{document}
+\maketitle
+
+Clustering is an important technique in Pattern Analysis to identify
+distinct groups in data.K-means clustering is a type of unsupervised
+learning, which is used when you have unlabeled data (i.e., data without
+defined categories or groups). The goal of this algorithm is to find
+groups in the data, with the number of groups represented by the
+variable K. The algorithm works \emph{iteratively} to assign each data
+point to one of the K groups based on the features that are provided.
+Data points are clustered based on feature similarity. The results of
+the K-means clustering algorithm are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The centroids of the K clusters, which can be used to label new data
+\item
+  Labels for the training data (each data point is assigned to a single
+  cluster)
+\end{enumerate}
+
+Rather than defining groups before looking at the data, clustering
+allows you to find and analyze the groups that have formed organically.
+The ``Choosing K'' section below describes how the number of groups can
+be determined.
+
+Each \emph{centroid} of a cluster is a collection of feature values that
+define the resulting groups. Examining the centroid feature weights can
+be used to qualitatively interpret what kind of group each cluster
+represents.
+
+The goal of this file is to showcase K-means clustering for the likert
+scale data in the seintinelles study.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"likert\_data\_seintinelles.csv"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 61 Columns: 19
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (19): use, organisation, acceptable, bse, recording, timeBSE, track, com...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(df)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 61 x 19
+##      use organisation acceptable   bse recording timeBSE track comfortRecrd
+##    <dbl>        <dbl>      <dbl> <dbl>     <dbl>   <dbl> <dbl>        <dbl>
+##  1     4            4          6     6         1       5     6            4
+##  2     5            6          4     6         5       6     7            7
+##  3     7            6          6     6         7       6     7            5
+##  4     7            7          7     7         7       7     7            7
+##  5     6            6          7     7         7       7     7            7
+##  6     7            4          5     7         6       7     6            6
+##  7     7            7          7     7         7       7     7            7
+##  8     6            4          5     7         5       7     6            7
+##  9     6            6          7     5         6       7     7            7
+## 10     7            7          7     7         7       7     7            7
+## # i 51 more rows
+## # i 11 more variables: rightTimeBSE <dbl>, addInfo <dbl>, deleteData <dbl>,
+## #   acceptableInfo <dbl>, intrusive <dbl>, useAgain <dbl>, expectation <dbl>,
+## #   useful <dbl>, enjoy <dbl>, satisfaction <dbl>, recommend <dbl>
+\end{verbatim}
+
+\hypertarget{normalization-plot}{%
+\subsection{Normalization Plot}\label{normalization-plot}}
+
+Plotting of the correlation of the normalized values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("ggcorrplot")}
+\FunctionTok{library}\NormalTok{(ggcorrplot)}
+\NormalTok{df\_scale }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(df)}
+\FunctionTok{ggcorrplot}\NormalTok{(df\_scale)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{k-means_clustering_seintinelles_files/figure-latex/pressure-1.pdf}
+
+\hypertarget{testing-for-clusters}{%
+\subsection{Testing for Clusters}\label{testing-for-clusters}}
+
+Trying out k-means with various clusters like 2, 3 and 4
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k2 }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(df, }\AttributeTok{centers =} \DecValTok{2}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{20}\NormalTok{)}
+\NormalTok{k3 }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(df, }\AttributeTok{centers =} \DecValTok{3}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{20}\NormalTok{)}
+\NormalTok{k4 }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(df, }\AttributeTok{centers =} \DecValTok{4}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{20}\NormalTok{)}
+
+\CommentTok{\# plots to compare}
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_cluster}\NormalTok{(k2, }\AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ df) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"k = 2"}\NormalTok{)}
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_cluster}\NormalTok{(k3, }\AttributeTok{geom =} \StringTok{"point"}\NormalTok{,  }\AttributeTok{data =}\NormalTok{ df) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"k = 3"}\NormalTok{)}
+\NormalTok{p4 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_cluster}\NormalTok{(k4, }\AttributeTok{geom =} \StringTok{"point"}\NormalTok{,  }\AttributeTok{data =}\NormalTok{ df) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"k = 4"}\NormalTok{)}
+
+
+\FunctionTok{grid.arrange}\NormalTok{(p2, p3, p4, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{k-means_clustering_seintinelles_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\hypertarget{choosing-optimal-cluster}{%
+\subsection{Choosing Optimal Cluster}\label{choosing-optimal-cluster}}
+
+For choosing the right optimal cluster for the data. There are 3 usual
+methods to measuring the quality of clustering
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Elbow
+\item
+  Silhouette
+\item
+  Gap-statistic
+\end{enumerate}
+
+\hypertarget{elbow-method}{%
+\subsubsection{Elbow Method}\label{elbow-method}}
+
+The \textbf{elbow} method plots the value of the cost function produced
+by different values of~\emph{k}. As you know, if~\emph{k}~increases,
+average distortion will decrease, each cluster will have fewer
+constituent instances, and the instances will be closer to their
+respective centroids. \textbf{Silhouette} method determines a point that
+measures how close that point lies to its nearest neighbor points,
+across all clusters. It provides information about clustering quality
+which can be used to determine whether further refinement by clustering
+should be performed on the current clustering.~
+
+The disadvantage of the elbow and average~silhouette~methods is that
+they measure a global clustering characteristic only. A more
+sophisticated method is to use the gap statistic which~provides a
+statistical procedure to formalize the elbow/silhouette heuristic in
+order to estimate the optimal number of clusters.
+
+\hypertarget{gap-statistics-method}{%
+\subsubsection{Gap-Statistics Method}\label{gap-statistics-method}}
+
+The gap statistic compares the total intracluster variation for
+different values of~\emph{k}~with their expected values under the null
+reference distribution of the data (i.e.~a distribution with no obvious
+clustering). The reference dataset is generated using Monte Carlo
+simulations of the sampling process. That is, for each variable in the
+data set we compute its range {[}min(xi),max(xj){]}{]}~and generate
+values for the n points uniformly from the interval min to max.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# choosing optimal cluster}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\CommentTok{\# three types of method for clustering 1{-}elbow, 2{-}silhouette, 3{-}gap\_staistic}
+\FunctionTok{fviz\_nbclust}\NormalTok{(df, kmeans, }\AttributeTok{method =} \StringTok{"gap\_stat"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{subtitle =} \StringTok{"gap{-}statistic"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{k-means_clustering_seintinelles_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+From the above plot, we can determine that the optimal cluster for the
+Likert scale will be \textbf{6}.
+
+\hypertarget{fitting-k-means}{%
+\subsection{Fitting K-Means}\label{fitting-k-means}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{km.out }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(df, }\DecValTok{6}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{20}\NormalTok{)}
+\NormalTok{km.out}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## K-means clustering with 6 clusters of sizes 1, 19, 14, 3, 10, 14
+## 
+## Cluster means:
+##        use organisation acceptable      bse recording timeBSE    track
+## 1 4.000000     4.000000   6.000000 6.000000  1.000000     5.0 6.000000
+## 2 6.894737     6.736842   7.000000 6.789474  6.789474     7.0 7.000000
+## 3 6.285714     6.142857   6.714286 6.714286  6.714286     7.0 6.428571
+## 4 6.333333     6.666667   7.000000 5.666667  6.666667     7.0 7.000000
+## 5 6.400000     5.400000   5.100000 6.200000  5.900000     6.4 5.900000
+## 6 6.000000     5.785714   6.357143 6.357143  5.928571     6.5 6.714286
+##   comfortRecrd rightTimeBSE  addInfo deleteData acceptableInfo intrusive
+## 1     4.000000     5.000000 7.000000   6.000000            5.0       1.0
+## 2     6.947368     6.842105 6.842105   7.000000            7.0       1.0
+## 3     7.000000     2.714286 6.214286   6.857143            7.0       1.0
+## 4     7.000000     4.000000 5.000000   6.333333            5.0       1.0
+## 5     6.000000     6.300000 6.200000   6.300000            6.5       2.4
+## 6     6.642857     5.714286 6.428571   5.500000            6.5       1.0
+##   useAgain expectation   useful    enjoy satisfaction recommend
+## 1 1.000000    5.000000 5.000000 4.000000     4.000000  6.000000
+## 2 6.736842    6.842105 6.947368 6.947368     6.842105  6.947368
+## 3 6.285714    6.214286 6.785714 6.785714     6.785714  6.357143
+## 4 5.666667    4.333333 4.666667 4.666667     4.333333  4.666667
+## 5 4.300000    5.300000 6.000000 5.700000     5.500000  4.500000
+## 6 6.500000    5.214286 6.500000 6.357143     6.214286  6.428571
+## 
+## Clustering vector:
+##  [1] 1 6 5 2 3 5 2 3 4 2 4 2 3 3 3 2 5 3 4 6 5 5 5 6 2 3 6 2 5 6 2 6 3 2 6 2 5 6
+## [39] 3 2 6 2 5 6 3 2 2 3 3 6 2 6 3 2 3 6 5 6 2 2 2
+## 
+## Within cluster sum of squares by cluster:
+## [1]   0.00000  47.36842 137.00000  29.33333 195.50000 154.92857
+##  (between_SS / total_SS =  51.0 %)
+## 
+## Available components:
+## 
+## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+## [6] "betweenss"    "size"         "iter"         "ifault"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# cluster vector}
+\NormalTok{km.out}\SpecialCharTok{$}\NormalTok{cluster}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 6 5 2 3 5 2 3 4 2 4 2 3 3 3 2 5 3 4 6 5 5 5 6 2 3 6 2 5 6 2 6 3 2 6 2 5 6
+## [39] 3 2 6 2 5 6 3 2 2 3 3 6 2 6 3 2 3 6 5 6 2 2 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# class of the k{-}means}
+\FunctionTok{str}\NormalTok{(km.out)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 9
+##  $ cluster     : int [1:61] 1 6 5 2 3 5 2 3 4 2 ...
+##  $ centers     : num [1:6, 1:19] 4 6.89 6.29 6.33 6.4 ...
+##   ..- attr(*, "dimnames")=List of 2
+##   .. ..$ : chr [1:6] "1" "2" "3" "4" ...
+##   .. ..$ : chr [1:19] "use" "organisation" "acceptable" "bse" ...
+##  $ totss       : num 1152
+##  $ withinss    : num [1:6] 0 47.4 137 29.3 195.5 ...
+##  $ tot.withinss: num 564
+##  $ betweenss   : num 587
+##  $ size        : int [1:6] 1 19 14 3 10 14
+##  $ iter        : int 4
+##  $ ifault      : int 0
+##  - attr(*, "class")= chr "kmeans"
+\end{verbatim}
+
+From the above results, we can see the the size of the 6 different
+clusters, clustering vector and the list of various components like
+centers, totss, etc,.
+
+\texttt{\$\ cluster} indicates the cluster assignment for each of the 61
+data points in your input data. For instance, the first data point is
+assigned to cluster 3, the second data point is in cluster 5, the third
+is in cluster 4, and so on.
+
+\texttt{\$\ centers:\ num\ {[}1:6,\ 1:19{]}\ 6.89\ 6.33\ 4\ 6.4\ 6\ ...\ \ \ ..-\ attr(*,\ "dimnames")=List\ of\ 2\ \ \ ..\ ..\$\ :\ chr\ {[}1:6{]}\ "1"\ "2"\ "3"\ "4"\ ...\ \ \ ..\ ..\$\ :\ chr\ {[}1:19{]}\ "use"\ "organisation"\ "acceptable"\ "bse"\ ...}
+
+This part shows the coordinates of the cluster centers in a
+19-dimensional space (which corresponds to the 19 variables in your
+original data). The matrix has 6 rows (one for each cluster) and 19
+columns (one for each variable). The row names (``1'', ``2'', ``3'',
+etc.) represent the cluster numbers, and the column names (``use'',
+``organisation'', etc.) represent the variable names.
+
+\texttt{\$\ withinss:\ num\ {[}1:6{]}\ 47.4\ 29.3\ 0\ 195.5\ 154.9\ ..}-
+This part displays the sum of squared distances of data points within
+each cluster to their respective cluster centers. For example, the sum
+of squared distances for the first cluster is 47.4, for the second
+cluster it's 29.3, and so on.
+
+\texttt{\$\ tot.withinss:\ num\ 564}- The total within-cluster sum of
+squares is 564, which is the sum of all the ``withinss'' values. This
+represents the total variability of data points within all clusters.
+
+\texttt{\$\ between} - The between-cluster sum of squares is 587, which
+represents the sum of squared distances between the cluster centers and
+the overall mean. It quantifies the variability between different
+clusters.
+
+\texttt{\$\ size:\ int\ {[}1:6{]}\ 19\ 3\ 1\ 10\ 14\ 14}- shows the
+number of data points in each cluster. For instance, the first cluster
+contains 19 data points, the second cluster contains 3 data points, and
+so on.
+
+\texttt{\$\ iter:\ int\ 4\ \ -}indicates that it took 4 iterations to
+converge and reach the final clustering solution.
+
+\texttt{\$\ ifault:\ int\ 0}- indicates that no faults were encountered
+during the clustering process.
+
+In summary, the output provides you with a detailed overview of the
+results of the k-means clustering analysis you performed on your data.
+It includes information about cluster assignments, cluster centers,
+within-cluster variability, between-cluster variability, cluster sizes,
+and convergence details.
+
+\hypertarget{visualization}{%
+\subsection{Visualization}\label{visualization}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# this provides a plot with cluster}
+\FunctionTok{fviz\_cluster}\NormalTok{(km.out, df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{k-means_clustering_seintinelles_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:gridExtra':
+## 
+##     combine
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Cluster =}\NormalTok{ km.out}\SpecialCharTok{$}\NormalTok{cluster) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Cluster) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise\_all}\NormalTok{(}\StringTok{"mean"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 20
+##   Cluster   use organisation acceptable   bse recording timeBSE track
+##     <int> <dbl>        <dbl>      <dbl> <dbl>     <dbl>   <dbl> <dbl>
+## 1       1  4            4          6     6         1        5    6   
+## 2       2  6.89         6.74       7     6.79      6.79     7    7   
+## 3       3  6.29         6.14       6.71  6.71      6.71     7    6.43
+## 4       4  6.33         6.67       7     5.67      6.67     7    7   
+## 5       5  6.4          5.4        5.1   6.2       5.9      6.4  5.9 
+## 6       6  6            5.79       6.36  6.36      5.93     6.5  6.71
+## # i 12 more variables: comfortRecrd <dbl>, rightTimeBSE <dbl>, addInfo <dbl>,
+## #   deleteData <dbl>, acceptableInfo <dbl>, intrusive <dbl>, useAgain <dbl>,
+## #   expectation <dbl>, useful <dbl>, enjoy <dbl>, satisfaction <dbl>,
+## #   recommend <dbl>
+\end{verbatim}
+
+The \textbf{\texttt{\%\textgreater{}\%}} pipe operator to chain together
+a sequence of data manipulation operations. First, the
+\textbf{\texttt{mutate()}} function is used to add a new column called
+``Cluster'' to the Likert data, where each entry represents the cluster
+assignment of the corresponding data point as determined by the k-means
+algorithm stored in the \textbf{\texttt{km.out\$cluster}} vector. Next,
+the \textbf{\texttt{group\_by()}} function is applied to group the data
+by the ``Cluster'' column. Finally, the
+\textbf{\texttt{summarise\_all("mean")}} function is used to calculate
+the mean value of each variable within each cluster group.
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+\begin{itemize}
+\item
+  \url{https://delladata.fr/kmeans/}
+\item
+  \url{https://uc-r.github.io/kmeans_clustering}
+\item
+  \url{https://towardsdatascience.com/10-tips-for-choosing-the-optimal-number-of-clusters-277e93d72d92}
+\end{itemize}
+
+\end{document}

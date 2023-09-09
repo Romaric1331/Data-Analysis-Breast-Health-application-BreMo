@@ -1,0 +1,162 @@
+---
+title: "K-means clustering for seintinelles study"
+author: "Romaric Sallustre"
+date: "2023-08-31"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(factoextra)
+library(NbClust)
+library(readr)
+library(FactoMineR)
+library(gridExtra)
+```
+
+```{=html}
+<style>
+.justify-text {
+  text-align: justify;
+}
+</style>
+```
+Clustering is an important technique in Pattern Analysis to identify distinct groups in data.K-means clustering is a type of unsupervised learning, which is used when you have unlabeled data (i.e., data without defined categories or groups). The goal of this algorithm is to find groups in the data, with the number of groups represented by the variable K. The algorithm works *iteratively* to assign each data point to one of the K groups based on the features that are provided. Data points are clustered based on feature similarity. The results of the K-means clustering algorithm are:
+
+1.  The centroids of the K clusters, which can be used to label new data
+
+2.  Labels for the training data (each data point is assigned to a single cluster)
+
+Rather than defining groups before looking at the data, clustering allows you to find and analyze the groups that have formed organically. The "Choosing K" section below describes how the number of groups can be determined.
+
+Each *centroid* of a cluster is a collection of feature values that define the resulting groups. Examining the centroid feature weights can be used to qualitatively interpret what kind of group each cluster represents.
+
+The goal of this file is to showcase K-means clustering for the likert scale data in the seintinelles study.
+
+```{r loading_data}
+df <- read_csv("likert_data_seintinelles.csv") 
+df <- na.omit(df)
+df
+
+```
+
+## Normalization Plot
+
+Plotting of the correlation of the normalized values
+
+```{r pressure, echo=TRUE, fig.width=16, fig.height=12}
+#install.packages("ggcorrplot")
+library(ggcorrplot)
+df_scale <- scale(df)
+ggcorrplot(df_scale)
+
+```
+
+## Testing for Clusters
+
+Trying out k-means with various clusters like 2, 3 and 4
+
+```{r}
+k2 <- kmeans(df, centers = 2, nstart = 20)
+k3 <- kmeans(df, centers = 3, nstart = 20)
+k4 <- kmeans(df, centers = 4, nstart = 20)
+
+# plots to compare
+p2 <- fviz_cluster(k2, geom = "point", data = df) + ggtitle("k = 2")
+p3 <- fviz_cluster(k3, geom = "point",  data = df) + ggtitle("k = 3")
+p4 <- fviz_cluster(k4, geom = "point",  data = df) + ggtitle("k = 4")
+
+
+grid.arrange(p2, p3, p4, nrow = 2)
+```
+
+## Choosing Optimal Cluster
+
+For choosing the right optimal cluster for the data. There are 3 usual methods to measuring the quality of clustering
+
+1.  Elbow
+
+2.  Silhouette
+
+3.  Gap-statistic
+
+### Elbow Method
+
+The **elbow** method plots the value of the cost function produced by different values of *k*. As you know, if *k* increases, average distortion will decrease, each cluster will have fewer constituent instances, and the instances will be closer to their respective centroids. **Silhouette** method determines a point that measures how close that point lies to its nearest neighbor points, across all clusters. It provides information about clustering quality which can be used to determine whether further refinement by clustering should be performed on the current clustering. 
+
+The disadvantage of the elbow and average silhouette methods is that they measure a global clustering characteristic only. A more sophisticated method is to use the gap statistic which provides a statistical procedure to formalize the elbow/silhouette heuristic in order to estimate the optimal number of clusters.
+
+### Gap-Statistics Method
+
+The gap statistic compares the total intracluster variation for different values of *k* with their expected values under the null reference distribution of the data (i.e. a distribution with no obvious clustering). The reference dataset is generated using Monte Carlo simulations of the sampling process. That is, for each variable in the data set we compute its range [min(xi),max(xj)]] and generate values for the n points uniformly from the interval min to max.
+
+```{r}
+# choosing optimal cluster
+set.seed(123)
+# three types of method for clustering 1-elbow, 2-silhouette, 3-gap_staistic
+fviz_nbclust(df, kmeans, method = "gap_stat") + labs(subtitle = "gap-statistic") 
+
+```
+
+From the above plot, we can determine that the optimal cluster for the Likert scale will be **6**.
+
+## Fitting K-Means
+
+```{r}
+km.out <- kmeans(df, 6, nstart = 20)
+km.out
+# cluster vector
+km.out$cluster
+# class of the k-means
+str(km.out)
+```
+
+From the above results, we can see the the size of the 6 different clusters, clustering vector and the list of various components like centers, totss, etc,.
+
+`$ cluster` indicates the cluster assignment for each of the 61 data points in your input data. For instance, the first data point is assigned to cluster 3, the second data point is in cluster 5, the third is in cluster 4, and so on.
+
+`$ centers: num [1:6, 1:19] 6.89 6.33 4 6.4 6 ...   ..- attr(*, "dimnames")=List of 2   .. ..$ : chr [1:6] "1" "2" "3" "4" ...   .. ..$ : chr [1:19] "use" "organisation" "acceptable" "bse" ...`
+
+This part shows the coordinates of the cluster centers in a 19-dimensional space (which corresponds to the 19 variables in your original data). The matrix has 6 rows (one for each cluster) and 19 columns (one for each variable). The row names ("1", "2", "3", etc.) represent the cluster numbers, and the column names ("use", "organisation", etc.) represent the variable names.
+
+`$ withinss: num [1:6] 47.4 29.3 0 195.5 154.9 ..`- This part displays the sum of squared distances of data points within each cluster to their respective cluster centers. For example, the sum of squared distances for the first cluster is 47.4, for the second cluster it's 29.3, and so on.
+
+`$ tot.withinss: num 564`- The total within-cluster sum of squares is 564, which is the sum of all the "withinss" values. This represents the total variability of data points within all clusters.
+
+`$ between` - The between-cluster sum of squares is 587, which represents the sum of squared distances between the cluster centers and the overall mean. It quantifies the variability between different clusters.
+
+`$ size: int [1:6] 19 3 1 10 14 14`- shows the number of data points in each cluster. For instance, the first cluster contains 19 data points, the second cluster contains 3 data points, and so on.
+
+`$ iter: int 4  -`indicates that it took 4 iterations to converge and reach the final clustering solution.
+
+`$ ifault: int 0`- indicates that no faults were encountered during the clustering process.
+
+In summary, the output provides you with a detailed overview of the results of the k-means clustering analysis you performed on your data. It includes information about cluster assignments, cluster centers, within-cluster variability, between-cluster variability, cluster sizes, and convergence details.
+
+## Visualization
+
+```{r}
+# this provides a plot with cluster
+fviz_cluster(km.out, df)
+
+```
+
+```{r}
+library(dplyr)
+df %>%
+  mutate(Cluster = km.out$cluster) %>%
+  group_by(Cluster) %>%
+  summarise_all("mean")
+```
+
+The **`%>%`** pipe operator to chain together a sequence of data manipulation operations. First, the **`mutate()`** function is used to add a new column called "Cluster" to the Likert data, where each entry represents the cluster assignment of the corresponding data point as determined by the k-means algorithm stored in the **`km.out$cluster`** vector. Next, the **`group_by()`** function is applied to group the data by the "Cluster" column. Finally, the **`summarise_all("mean")`** function is used to calculate the mean value of each variable within each cluster group.
+
+## References
+
+-   <https://delladata.fr/kmeans/>
+
+-   <https://uc-r.github.io/kmeans_clustering>
+
+-   <https://towardsdatascience.com/10-tips-for-choosing-the-optimal-number-of-clusters-277e93d72d92>
