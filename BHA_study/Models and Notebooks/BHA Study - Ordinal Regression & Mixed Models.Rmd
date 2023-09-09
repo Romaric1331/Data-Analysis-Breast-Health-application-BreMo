@@ -1,0 +1,311 @@
+---
+title: "Mixed Models & Ordinal Regression - BHA Study"
+author: "Romaric Sallustre"
+date: "2023-07-27"
+output:
+  html_document: default
+  pdf_document: default
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tinytex)
+library(reticulate)
+```
+
+## Introduction
+
+`Ordinal regression` is a type of regression analysis used for
+predicting an ordinal variable, i.e. a variable whose value exists on an
+arbitrary scale where only the relative ordering between different
+values is significant. This paper mainly focuses on ordinal regression
+and initiating mixed models in R and Python. It can be considered an
+intermediate problem between regression and classification. The second
+part evolved in the analysis of the BHA Study is the mixed model is
+a statistical model containing both fixed effects and random effects.
+
+As a small description of the data, the table is a formulation of
+various features present in the current and tested application
+**BreMo.** The `User_ID` is the participant who tested various
+applications, where each participant tested one of the current breast
+health monitoring apps like *Breast Check Now, Dear Mamma, Stan
+Swasthya, Pink Pakistan,* and *Daisy Wheel* with *BreMo*. `App_ID-1` is
+given to the new application **BreMo** application and other apps are as
+follows. `f1 to f5` are the various features of the existing and new
+applications like *BSE(Breast Self Examination), reminder, tracking, and
+recording.*`TotalScore` is the total no. of observations selected by the
+participants as the better one
+
+Here comes the loading of data:
+
+```{r}
+library(readr)
+
+# Specify column types
+col_types <- cols(
+  User_ID = col_double(),
+  App_ID = col_double(),
+  f1 = col_double(),
+  f2 = col_double(),
+  f3 = col_double(),
+  f4 = col_double(),
+  f5 = col_double(),
+  TotalScore = col_double()
+)
+
+# Read the CSV file with the specified column types
+Overall_concordance_matrix <- read_csv("Overall_concordance_matrix.csv", col_types = col_types)
+
+# Print the data frame
+Overall_concordance_matrix
+
+```
+
+After loading the data, convert the variables to factors,
+
+```{r}
+Overall_concordance_matrix$User_ID <- as.factor(Overall_concordance_matrix$User_ID) 
+Overall_concordance_matrix$App_ID <- as.factor(Overall_concordance_matrix$App_ID) 
+Overall_concordance_matrix$TotalScore <- as.factor(Overall_concordance_matrix$TotalScore)
+
+```
+
+Now, the data is set to go for modelling!
+
+### MASS - Model Applied Statistics with S
+
+It is a set of support functions and Datasets for Venables and Ripley's
+MASS. In MASS, we use the process `Polr()`, which fits a logistic or
+probit regression model to an ordered factor response. The basic
+interpretation is as a coarsened version of a latent variable Yi which
+has a logistic or normal or extreme-value or Cauchy distribution with
+scale parameter one and a linear model for the mean. The ordered factor
+is observed in which bin Yi falls into with breakpoints.
+
+`ζ0 = −∞ < ζ1 < · · · < ζK = ∞`
+
+This leads to the model
+
+`logitP(Y ≤ k|x) = ζk − η`
+
+with logit replaced by probit for a normal latent variable, and η being
+the linear predictor, a linear function of the explanatory variables
+(with no intercept). So, before creating the model we must install it.
+
+Sometimes, there will be some problems with the installation, kindly
+ignore it
+
+```{r}
+library(MASS)
+```
+
+for the BHA study, we implemented logistic regression with the below
+formula
+
+Formula: TotalScore \~ App_ID
+
+```{r}
+mass_model <- polr(Overall_concordance_matrix$TotalScore ~ App_ID, data = Overall_concordance_matrix, Hess = TRUE, method = "logistic") 
+summary(mass_model)
+```
+
+`polr()`stands for "proportional odds logistic regression" and is part
+of the MASS package. It is used to fit ordinal logistic regression
+models, where the response variable has ordered categories. The model
+assumes that the log odds of being in a certain category are
+proportional to the predictors (App_ID in this case).
+
+`givendata$TotalScore ~ App_ID`: This part specifies the formula for the
+model. You are fitting the `TotalScore` variable in the `givendata`data
+frame as the response variable and using App_ID as the predictor
+variable. The tilde \~ separates the response from the predictor in the
+formula.
+
+`Hess = TRUE` is optional and specifies whether to compute the Hessian
+matrix, which estimates the standard errors of the coefficients. Hess
+allows us to obtain more information about the model's precision.
+logistic method indicates that a logistic link function will be used,
+which is appropriate for proportional odds models.
+
+summary of the model provides results of various measures like p-value,
+z-value, threshold, std. error and estimates.
+
+## Mixed Models
+
+### LME4 - Linear Mixed-Effects Models using 'Eigen' and S4
+
+The `lme4` package for R is one of the well-known packages for fitting
+Mixed models. It provides functions to fit and analyze linear mixed
+models, generalized linear mixed models, and nonlinear mixed models. In
+each of these names, the term "mixed" or, more fully, "mixed effects",
+denotes a model that incorporates both fixed- and random-effects terms
+in a linear predictor expression from which the conditional mean of the
+response can be evaluated. In the BHA Study, we used the `lme4` library
+for more correlation with random effects. For initiating the `lme4`
+model for the BHA study,
+
+```{r}
+library(lme4)
+library(Matrix)
+```
+
+Then, we convert the `TotalScore` as numeric because the response
+variable `lmer` function requires it to be numeric for fitting a linear
+mixed-effects model.App_ID is the predictor variable of the model,
+meaning it's considered as the effects of different levels on the
+`TotalScore`. `(1|User_ID)` represents the random intercept model, where
+we assume that the intercept can vary randomly across different User_ID
+
+```{r}
+#conversion to numeric 
+Overall_concordance_matrix$TotalScore <- as.numeric(Overall_concordance_matrix$TotalScore)
+# Fitting Lmer Model
+model<- lmer(Overall_concordance_matrix$TotalScore ~ App_ID + (1 | User_ID), data = Overall_concordance_matrix) 
+summary(model)
+```
+
+The summary of the model provides various statistics, including fixed
+effects coefficients, random effects variance estimates, and more. It
+helps us to assess the significance and strength of the predictors and
+the overall fit of the model to the data.
+
+The model results with REML (Restricted Maximum Likelihood) is a measure
+of model fit. the value from the model is 71.6, which represents the
+goodness of fit.
+
+*`Scaled Residuals`* - These are the measure of the differences between
+the observed TotalScore values and the predicted values from the fitted
+model. Residuals near 0 indicate a good fit, while larger residuals
+suggest discrepancies between the model and the actual data.
+
+*`Random Effects`* - For BHA study model, you have two random effects,
+
+*(Intercept) for User_ID:* The variance and standard deviation of the
+random intercept among different User_ID groups are close to 0,
+indicating that there is very little variation in the intercepts between
+users.
+
+*Residual*: The variance and standard deviation of the residual errors
+are 0.8222 and 0.9068, respectively. The "Number of obs" line indicates
+that there are 30 observations in the dataset, grouped into 15 unique
+User_ID groups.
+
+*Fixed Effects and Correlation*: For each level of the App_ID variable
+(from 2 to 6), the output is shown with an estimated coefficient,
+standard error, and t-value, which is a measure of how many standard
+errors the coefficient estimate is away from zero. It indicates the
+significance of the predictor in relation to the response variable. The
+correlation between the fixed effects. The values along the diagonal
+represent the correlation of each predictor variable with itself (which
+is always 1). The off-diagonal values show the correlation between pairs
+of predictor variables. In this case, it appears that the predictor
+variables (App_ID2 to App_ID6) are weakly negatively correlated with the
+intercept (Intercept).
+
+The model ended with a singular fit warning, which means the boundary of
+the parameter space or when some parameters become linearly dependent on
+each other.
+
+A singular fit can indicate various potential problems, such as:
+
+-   Perfect Multicollinearity
+
+-   Overfitting
+
+-   Insufficient Data
+
+The issue in our model was the insufficient data because the total
+number of observations in the BHA study is only 30.
+
+**For having a crossover in the mixed models, we also went with Python.
+We used a library named** `statsmodels`
+
+### STATSMODELS - Python
+
+The `statsmodels` library is a Python package that provides classes and
+functions for the estimation of various statistical models, hypothesis
+testing, and statistical data exploration. In the BHA model, we used
+`MixedLM` class, which allows you to fit linear mixed-effects models,
+which are also known as hierarchical linear models or multilevel models.
+These models are used when you have data with hierarchical or nested
+structures, such as repeated measures within subjects or observations
+nested within groups.
+
+The `MixedLM` class in `statsmodels` also allows you to specify
+different covariance structures for the random effects, specify custom
+variance-covariance matrices, and handle missing data using different
+methods.
+
+```{r}
+# Load the reticulate package
+library(reticulate)
+
+# Set the conda environment name
+use_condaenv(condaenv = "my_env", required = TRUE)
+```
+
+```{python}
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+csv_reader = pd.read_csv('Overall_concordance_matrix.csv')
+
+# Drop rows with missing values
+csv_reader = csv_reader.dropna(subset=['User_ID'])
+
+# formula for the model
+formula = 'TotalScore ~ App_ID + (1|User_ID)'
+
+# Create the mixed effects model
+model = smf.mixedlm(formula, data=csv_reader, groups=csv_reader['App_ID'])
+
+
+result = model.fit()
+
+print(result.summary())
+
+```
+
+The above code chunks will showcase the initiation of python code chunks
+in R markdown(.Rmd) and mixed effects model fitting. The model summary
+can be described in three parts for our understanding,
+
+-   Model Coefficients:
+
+    *Intercept*: The intercept term (when all other predictors are
+    zero).
+
+    *App_ID*: The coefficient for the predictor variable "App_ID."
+
+    *1 \| User_ID*: The coefficient for the grouping variable "User_ID."
+    The notation "1 \|" indicates a random intercept for the grouping
+    variable.
+
+    *Group Var*: The estimated variance of the random intercepts among
+    different groups.
+
+-   Model Fit:
+
+    *Scale*: The estimated scale parameter of the model (related to the
+    residual standard deviation).
+
+    *Log-Likelihood*: It is a measure of how well the statistical model
+    fits the observed data. It quantifies the probability of observing
+    the data given the model's parameter estimates. The lower the
+    likelihood indicates a better fit of the model.
+
+    *Converged*: Indicates whether the given optimization algorithm
+    converged to a solution.
+
+-   P\>\|z\|: They indicate the statistical significance of each
+    predictor. In the BHA study model, "Intercept" has a p-value of
+    0.000, which means it is statistically significant at any reasonable
+    significance level (usually 0.05). The other predictors are not
+    significant as their p-values are greater than 0.05.

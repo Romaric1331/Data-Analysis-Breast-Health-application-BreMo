@@ -1,0 +1,62 @@
+definition,early_diagnosis,risk_breastfeeding,risk_physical_activity,risk_overweight,risk_early_pregnancy,no_riskFactor,symptoms_BC,lumps,mammography,myths_wounds,myths_bra_irritation,bse_knowhow,bse_practice,bse_when,bse_observation,bse_palpation_movement,bse_auxiliary,bse_pressure,bse_positions
+Yes,Yes,No,Yes,Yes,No,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,Yes,Do not know,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Do not know,Yes
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, discharge",Yes,No,No,Do not know,Yes,Yes,Once6Mths,Yes,Yes,Yes,No,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Do not know,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Do not know,No
+Yes,Yes,Yes,Do not know,Yes,Yes,Do not know,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,No,Do not know,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, PeriodicBi-Pain, discharge, sizeChange",No,No,Yes,No,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,No,Yes,Yes,No,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,No,Do not know,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge",Yes,No,No,No,Yes,Yes,Once1Yr,Do not know,Yes,Yes,Do not know,No
+Yes,Yes,Do not know,Yes,Yes,Yes,Do not know,"painlessLump, discharge, sizeChange",Yes,Do not know,No,No,Yes,No,Never,Yes,Do not know,Do not know,Do not know,Do not know
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",No,No,Yes,No,Yes,No,Never,Yes,Yes,Yes,No,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",No,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",No,No,No,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,Do not know,Do not know,Yes,Yes,EveryMonth,Yes,No,Yes,Yes,Yes
+Yes,Yes,Do not know,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Do not know,Yes,No,No,Yes,No,Never,Yes,No,Do not know,Do not know,No
+Yes,Yes,Yes,Yes,Yes,Do not know,No,"painlessLump, smallMobileLumps, sizeChange",Do not know,No,Do not know,Yes,Yes,No,Never,Yes,Yes,Yes,Do not know,Yes
+Yes,Yes,Yes,Yes,Do not know,Yes,Do not know,"painlessLump, smallMobileLumps, discharge, sizeChange",Do not know,No,Do not know,Do not know,Yes,Yes,Once6Mths,Yes,Yes,Do not know,Yes,Yes
+Yes,Yes,No,Yes,Yes,Do not know,Yes,"discharge, sizeChange",Do not know,No,No,No,Yes,No,Never,Yes,Yes,No,No,Yes
+Yes,Yes,No,Yes,Yes,No,No,"painlessLump, discharge, sizeChange",Yes,No,Do not know,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Do not know,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,Yes,No,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,No,No
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Do not know,No,Do not know,Yes,Yes,Yes,Once6Mths,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,No,Do not know,Do not know,Do not know,No,"painlessLump, discharge, sizeChange",Yes,No,Do not know,Do not know,Yes,Yes,Once1Yr,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",No,No,No,No,Yes,Yes,EveryMonth,Yes,No,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Yes,Yes,No,No,Yes,No,Never,Yes,Yes,Yes,Do not know,Yes
+Yes,Yes,Yes,Yes,Yes,Do not know,Yes,"painlessLump, smallMobileLumps, discharge, sizeChange",No,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Do not know,"painlessLump, smallMobileLumps, discharge",No,Yes,No,No,No,No,Never,Yes,No,No,No,Yes
+Yes,Yes,No,Yes,Yes,Do not know,No,"painlessLump, smallMobileLumps, sizeChange",Yes,No,No,Do not know,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Do not know,No,Yes,No,"painlessLump, discharge, sizeChange",Do not know,No,No,Do not know,Yes,Yes,Once1Yr,Yes,Yes,Yes,No,No
+Yes,Yes,Do not know,Yes,Yes,Do not know,Yes,"painlessLump, sizeChange",Yes,No,No,No,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, discharge, sizeChange",Yes,Yes,No,No,Yes,No,Once1Yr,Yes,Yes,Yes,No,No
+Yes,Yes,Yes,Yes,Yes,Yes,Yes,"painlessLump, discharge",Do not know,No,No,No,Yes,Yes,Once1Yr,Yes,No,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Yes,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Yes,"painlessLump, discharge, sizeChange",No,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,No,Yes
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, discharge, sizeChange",Do not know,No,No,Yes,Yes,No,Never,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,Yes,Once6Mths,Yes,No,Yes,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge",Yes,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Do not know,Yes,Yes
+Yes,Yes,Yes,Yes,Do not know,Do not know,No,"painlessLump, discharge, sizeChange",Yes,No,Do not know,No,Yes,No,Once1Yr,Yes,No,Yes,Yes,Yes
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, discharge, sizeChange",Do not know,Yes,No,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,Do not know,Yes
+Yes,Yes,No,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,No,No,Yes,No,Never,Yes,Yes,No,Yes,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,Yes,Do not know,No,Yes,No,Never,Yes,Yes,Yes,No,No
+Yes,Yes,Do not know,Do not know,Yes,Yes,No,"painlessLump, smallMobileLumps, sizeChange",Yes,Yes,Do not know,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,No,No
+Yes,Yes,Do not know,Do not know,Do not know,Do not know,Do not know,"painlessLump, discharge, sizeChange",Yes,No,Do not know,No,Yes,Yes,Once6Mths,Yes,Do not know,Yes,Yes,Do not know
+Yes,Yes,No,No,Do not know,No,No,"painlessLump, discharge",Yes,No,No,No,Yes,No,Never,Yes,Yes,No,Do not know,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Yes,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,No,Never,Yes,Do not know,Yes,Do not know,No
+Yes,Yes,Yes,Yes,Yes,Do not know,Do not know,"painlessLump, discharge, sizeChange",Do not know,No,Do not know,Do not know,Yes,Yes,Once6Mths,Yes,Do not know,Yes,Yes,No
+Yes,Yes,Yes,Yes,Do not know,Do not know,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Do not know,No,No,No,Yes,No,Never,Yes,Yes,Do not know,Do not know,Do not know
+Yes,Yes,No,Yes,Yes,No,No,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,No,Once1Yr,Yes,Yes,Yes,No,Yes
+Yes,Yes,Yes,Yes,Yes,Do not know,Do not know,"painlessLump, smallMobileLumps, PeriodicBi-Pain, discharge, sizeChange",Do not know,No,Do not know,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,No,No,Do not know,No,No,"painlessLump, smallMobileLumps, discharge, sizeChange",Do not know,No,No,No,Yes,No,Never,Yes,Yes,Do not know,No,No
+Yes,Yes,Do not know,Yes,Yes,Do not know,No,"painlessLump, smallMobileLumps, discharge, sizeChange",No,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,No,Yes,No
+Yes,Yes,No,Yes,Yes,Yes,Do not know,"painlessLump, discharge, sizeChange",Yes,No,No,No,Yes,Yes,EveryMonth,Yes,No,Yes,Yes,Yes
+Yes,Yes,Do not know,Do not know,Do not know,Do not know,Do not know,"discharge, sizeChange",Do not know,No,Do not know,Do not know,Yes,No,Never,Yes,Yes,Yes,Do not know,Do not know
+Yes,Yes,Yes,Yes,Yes,Yes,Do not know,"painlessLump, discharge, sizeChange",Do not know,No,No,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,Do not know,Do not know
+Yes,Yes,No,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",No,Yes,No,No,Yes,No,Never,Yes,No,No,No,No
+Yes,Yes,Yes,Yes,Yes,Yes,Do not know,"painlessLump, discharge, sizeChange",Do not know,No,Do not know,No,Yes,Yes,Once6Mths,Yes,No,No,No,No
+Yes,Yes,Yes,Yes,Yes,Yes,Do not know,"painlessLump, smallMobileLumps, discharge",Do not know,No,No,No,Yes,Yes,Once6Mths,Yes,Yes,Yes,No,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,Yes,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,Yes,No,Yes,Yes,Once1Yr,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Do not know,Do not know,Do not know,Do not know,Do not know,"PeriodicBi-Pain, discharge, sizeChange",Do not know,Do not know,Do not know,Yes,Yes,No,Never,Yes,Yes,No,No,No
+Yes,Yes,Do not know,Yes,Yes,Yes,No,"painlessLump, discharge, sizeChange",Do not know,No,No,No,Yes,Yes,Once6Mths,Yes,No,No,No,Yes
+Yes,Yes,Yes,Yes,Yes,Yes,No,"painlessLump, smallMobileLumps, discharge",No,No,No,No,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
+Yes,Yes,Do not know,Do not know,Do not know,Do not know,Yes,"painlessLump, smallMobileLumps, discharge, sizeChange",Yes,No,Do not know,Do not know,Yes,Yes,EveryMonth,Yes,Yes,Yes,Yes,Yes
